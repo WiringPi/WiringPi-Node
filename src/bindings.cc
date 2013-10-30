@@ -24,6 +24,27 @@ namespace wpi {
   DECLARE(pwmSetRange);
   DECLARE(pwmSetClock);
   DECLARE(pwmWrite);
+  DECLARE(pullUpDnControl);
+}
+
+IMPLEMENT(pullUpDnControl) {
+  HandleScope scope;
+  
+  if (args.Length() != 2) {
+    ThrowException(Exception::TypeError(
+      String::New("Wrong number of arguments.")));
+    return scope.Close(Undefined());
+  }
+    
+  if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
+    ThrowException(Exception::TypeError(
+      String::New("Incorrect argument types. Numbers expected.")));
+    return scope.Close(Undefined());
+  }
+  
+  ::pullUpDnControl(args[0]->NumberValue(), args[1]->NumberValue());
+
+  return scope.Close(Undefined());
 }
 
 IMPLEMENT(wiringPiSetup) {
@@ -218,5 +239,6 @@ void init(Handle<Object> target) {
   EXPORT(pwmSetRange);
   EXPORT(pwmSetClock);
   EXPORT(pwmWrite);
+  EXPORT(pullUpDnControl);
 }
 NODE_MODULE(wiringPi, init)

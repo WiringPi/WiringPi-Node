@@ -61,6 +61,15 @@ wpi.digitalRead(0);
 
 - `pin`: pin number
 
+### `wpi.pullUpDnControl(pin, value)`
+
+```javascript
+wpi.pullUpDnControl(0, wpi.pull.DOWN);
+```
+
+- `pin`: pin number
+- `value`: `wpi.pull.OFF`, `wpi.pull.DOWN`, `wpi.pull.UP`
+
 ### Wrapped WiringPI calls:
 
 These have the same arguments as their WiringPi counterparts
