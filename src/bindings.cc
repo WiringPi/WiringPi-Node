@@ -2006,7 +2006,7 @@ IMPLEMENT(wiringPiSPIGetFd) {
   channel = args[0]->Int32Value();
   
   // CHECK: Allowed values
-  if (channel != 0 || channel != 1) {
+  if (channel != 0 && channel != 1) {
     ThrowException(Exception::TypeError(
       String::New("Incorrect channel value. 0 or 1 expected.")));
     return scope.Close(Undefined());
@@ -2046,7 +2046,7 @@ IMPLEMENT(wiringPiSPIDataRW) {
   len = args[2]->Int32Value();
   
   // CHECK: Allowed values
-  if (channel != 0 || channel != 1) {
+  if (channel != 0 && channel != 1) {
     ThrowException(Exception::TypeError(
       String::New("Incorrect channel value. 0 or 1 expected.")));
     return scope.Close(Undefined());
@@ -2083,7 +2083,7 @@ IMPLEMENT(wiringPiSPISetup) {
   speed = args[1]->Int32Value();
   
   // CHECK: Allowed values
-  if (channel != 0 || channel != 1) {
+  if (channel != 0 && channel != 1) {
     ThrowException(Exception::TypeError(
       String::New("Incorrect channel value. 0 or 1 expected.")));
     return scope.Close(Undefined());
