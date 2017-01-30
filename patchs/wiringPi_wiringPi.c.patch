@@ -1,0 +1,64 @@
+diff --git a/wiringPi/wiringPi.c b/wiringPi/wiringPi.c
+index 636bfa1..cbc3adf 100644
+--- a/wiringPi/wiringPi.c
++++ b/wiringPi/wiringPi.c
+@@ -84,6 +84,7 @@
+ 
+ #define	ENV_DEBUG	"WIRINGPI_DEBUG"
+ #define	ENV_CODES	"WIRINGPI_CODES"
++#define ENV_GPIOMEM     "WIRINGPI_GPIOMEM"
+ 
+ 
+ // Mask for the bottom 64 pins which belong to the Raspberry Pi
+@@ -250,6 +251,10 @@ static pthread_mutex_t pinMutex ;
+ int wiringPiDebug       = FALSE ;
+ int wiringPiReturnCodes = FALSE ;
+ 
++// Use /dev/gpiomem ?
++
++int wiringPiTryGpioMem  = FALSE ;
++
+ // sysFds:
+ //	Map a file descriptor from the /sys/class/gpio/gpioX/value
+ 
+@@ -1866,8 +1871,8 @@ int wiringPiSetup (void)
+   if (getenv (ENV_CODES) != NULL)
+     wiringPiReturnCodes = TRUE ;
+ 
+-  if (geteuid () != 0)
+-    (void)wiringPiFailure (WPI_FATAL, "wiringPiSetup: Must be root. (Did you forget sudo?)\n") ;
++  if (getenv (ENV_GPIOMEM) != NULL)
++     wiringPiTryGpioMem = TRUE ;
+ 
+   if (wiringPiDebug)
+     printf ("wiringPi: wiringPiSetup called\n") ;
+@@ -1889,8 +1894,27 @@ int wiringPiSetup (void)
+ 
+ // Open the master /dev/memory device
+ 
+-  if ((fd = open ("/dev/mem", O_RDWR | O_SYNC | O_CLOEXEC) ) < 0)
+-    return wiringPiFailure (WPI_ALMOST, "wiringPiSetup: Unable to open /dev/mem: %s\n", strerror (errno)) ;
++  if (wiringPiTryGpioMem)
++  {
++    if ((fd = open ("/dev/gpiomem", O_RDWR | O_SYNC | O_CLOEXEC) ) < 0)
++      return wiringPiFailure (WPI_ALMOST, "wiringPiSetup: Unable to open /dev/gpiomem: %s\n", strerror (errno)) ;
++    BCM2708_PERI_BASE = 0;
++  }
++
++//      ... otherwise fall back to the original /dev/mem which requires root level access
++
++  else
++  {
++//      This check is here because people are too stupid to check for themselves or read
++//              error messages.
++
++    if (geteuid () != 0)
++      (void)wiringPiFailure (WPI_FATAL, "wiringPiSetup: Must be root. (Did you forget sudo?)\n") ;
++
++    if ((fd = open ("/dev/mem", O_RDWR | O_SYNC | O_CLOEXEC) ) < 0)
++      return wiringPiFailure (WPI_ALMOST, "wiringPiSetup: Unable to open /dev/mem: %s\n", strerror (errno)) ;
++  }
++
+ 
+ // GPIO:
+ 

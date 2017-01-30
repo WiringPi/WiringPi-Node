@@ -50,6 +50,7 @@ echo "done."
 
 patch ./wiringpi/devLib/Makefile < ./patchs/devLib_Makefile.patch
 patch ./wiringpi/gpio/Makefile < ./patchs/gpio_Makefile.patch
+patch ./wiringpi/wiringPi/wiringPi.c < ./patchs/wiringPi_wiringPi.c.patch
 
 echo -n "Making libWiringPi ... "
 cd ./wiringpi/wiringPi/
