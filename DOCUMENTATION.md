@@ -364,24 +364,36 @@ Indexes of each string table have corresponding constants
 
 * `PI_MODEL_NAME`
   * `PI_MODEL_UNKNOWN`
-  <span class="api-info-list"><code> >= 2.0.0 </code></span>
+  <span class="api-info-list"><code> < 3.0.0 </code></span>
   * `PI_MODEL_A`
+  <span class="api-info-list"><code> >= 1.1.0 </code></span>
+  * `PI_MODEL_B`
   <span class="api-info-list"><code> >= 1.1.0 </code></span>
   * `PI_MODEL_AP`
   <span class="api-info-list"><code> >= 2.1.0 </code></span>
-  * `PI_MODEL_B`
-  <span class="api-info-list"><code> >= 1.1.0 </code></span>
   * `PI_MODEL_BP`
   <span class="api-info-list"><code> >= 2.0.0 </code></span>
-  * `PI_MODEL_CM`
-  <span class="api-info-list"><code> >= 1.1.1 </code></span>
   * `PI_MODEL_2`
   <span class="api-info-list"><code> >= 2.1.0 </code></span>
+  * `PI_ALPHA`
+  <span class="api-info-list"><code> >= 3.0.0 </code></span>
+  * `PI_MODEL_CM`
+  <span class="api-info-list"><code> >= 1.1.1 </code></span>
+  * `PI_MODEL_07`
+  <span class="api-info-list"><code> >= 3.0.0 </code></span>
+  * `PI_MODEL_3`
+  <span class="api-info-list"><code> >= 3.0.0 </code></span>
+  * `PI_MODEL_ZERO`
+  <span class="api-info-list"><code> >= 3.0.0 </code></span>
+  * `PI_MODEL_CM3`
+  <span class="api-info-list"><code> >= 3.0.0 </code></span>
+  * `PI_MODEL_ZERO_W`
+  <span class="api-info-list"><code> >= 3.0.0 </code></span>
 
 
 * `PI_REVISION_NAMES`
   * `PI_VERSION_UNKNOWN`
-  <span class="api-info-list"><code> >= 2.0.0 </code></span>
+  <span class="api-info-list"><code> < 3.0.0 </code></span>
   * `PI_VERSION_1`
   <span class="api-info-list"><code> >= 2.0.0 </code></span>
   * `PI_VERSION_1_1`
@@ -392,16 +404,19 @@ Indexes of each string table have corresponding constants
   <span class="api-info-list"><code> >= 2.0.0 </code></span>
 
 * `PI_MAKER_NAMES`
-  * `PI_MAKER_UNKNOWN`
+  * `PI_MAKER_SONY`
   <span class="api-info-list"><code> >= 2.0.0 </code></span>
   * `PI_MAKER_EGOMAN`
   <span class="api-info-list"><code> >= 2.0.0 </code></span>
+  * `PI_MAKER_EMBEST`
+  <span class="api-info-list"><code> >= 3.0.0 </code></span>
+  * `PI_MAKER_UNKNOWN`
+  <span class="api-info-list"><code> >= 2.0.0 </code></span>
   * `PI_MAKER_MBEST`
-  <span class="api-info-list"><code> >= 2.1.0 </code></span>
-  * `PI_MAKER_SONY`
-  <span class="api-info-list"><code> >= 2.0.0 </code></span>
+  <span class="api-info-list"><code> < 3.0.0 </code></span>
   * `PI_MAKER_QISDA`
-  <span class="api-info-list"><code> >= 2.0.0 </code></span>
+  <span class="api-info-list"><code> < 3.0.0 </code></span>
+
 
 ### wpiPinToGpio(pin)
 <span class="api-info"><code> >= 1.0.0 </code></span>

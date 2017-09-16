@@ -1,19 +1,19 @@
---- Makefile_org	2014-07-04 09:48:18.000000000 +0200
-+++ Makefile	2014-07-04 10:12:15.000000000 +0200
-@@ -26,6 +26,7 @@
- VERSION=$(DYN_VERS_MAJ).$(DYN_VERS_MIN)
- DESTDIR=/usr
- PREFIX=/local
+--- a/devLib/Makefile
++++ b/devLib/Makefile
+@@ -24,6 +24,7 @@
+ VERSION=$(shell cat ../VERSION)
+ DESTDIR?=/usr
+ PREFIX?=/local
 +PWD=`pwd`
  
- STATIC=libwiringPiDev.a
- DYNAMIC=libwiringPiDev.so.$(VERSION)
-@@ -33,7 +34,7 @@
+ LDCONFIG?=ldconfig
+ 
+@@ -37,7 +38,7 @@ DYNAMIC=libwiringPiDev.so.$(VERSION)
  #DEBUG	= -g -O0
  DEBUG	= -O2
  CC	= gcc
 -INCLUDE	= -I.
 +INCLUDE	= -I. -I$(PWD)/../wiringPi
  DEFS	= -D_GNU_SOURCE
- CFLAGS	= $(DEBUG) -Wformat=2 -Wall $(INCLUDE) -Winline -pipe -fPIC
+ CFLAGS	= $(DEBUG) $(DEFS) -Wformat=2 -Wall -Winline $(INCLUDE) -pipe -fPIC
  
