@@ -1,0 +1,11 @@
+--- ./wiringpi/wiringPi/Makefile	2018-07-09 17:41:41.230429060 +0200
++++ ./wiringpi/wiringPi/Makefile_orig	2018-07-09 17:40:09.449485572 +0200
+@@ -30,7 +30,7 @@
+ 
+ #DEBUG	= -g -O0
+ DEBUG	= -O2
++CC	?= gcc
+-CC	= gcc
+ INCLUDE	= -I.
+ DEFS	= -D_GNU_SOURCE
+ CFLAGS	= $(DEBUG) $(DEFS) -Wformat=2 -Wall -Winline $(INCLUDE) -pipe -fPIC

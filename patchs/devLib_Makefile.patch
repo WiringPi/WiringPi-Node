@@ -11,7 +11,8 @@
 @@ -33,7 +34,7 @@
  #DEBUG	= -g -O0
  DEBUG	= -O2
- CC	= gcc
+-CC	= gcc
++CC	?= gcc
 -INCLUDE	= -I.
 +INCLUDE	= -I. -I$(PWD)/../wiringPi
  DEFS	= -D_GNU_SOURCE
