@@ -50,6 +50,7 @@ echo "done."
 
 patch ./wiringpi/devLib/Makefile < ./patchs/devLib_Makefile.patch
 patch ./wiringpi/gpio/Makefile < ./patchs/gpio_Makefile.patch
+patch ./wiringpi/wiringPi/Makefile < ./patchs/wiringpi_Makefile.patch
 
 if [ -z "$CC" ]; then
 	export CC=gcc
