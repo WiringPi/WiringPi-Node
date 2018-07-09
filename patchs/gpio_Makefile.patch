@@ -8,7 +8,8 @@
  
  #DEBUG	= -g -O0
  DEBUG	= -O2
- CC	= gcc
+-CC	= gcc
++CC	?= gcc
 -INCLUDE	= -I$(DESTDIR)$(PREFIX)/include
 +INCLUDE	= -I$(PWD)/../wiringPi -I$(PWD)/../devLib
  CFLAGS	= $(DEBUG) -Wall $(INCLUDE) -Winline -pipe
