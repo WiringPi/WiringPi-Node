@@ -51,6 +51,10 @@ echo "done."
 patch ./wiringpi/devLib/Makefile < ./patchs/devLib_Makefile.patch
 patch ./wiringpi/gpio/Makefile < ./patchs/gpio_Makefile.patch
 
+if [ -z "$CC" ]; then
+	export CC=gcc
+fi
+
 echo -n "Making libWiringPi ... "
 cd ./wiringpi/wiringPi/
 make clean >> ../../install.log 2>&1
