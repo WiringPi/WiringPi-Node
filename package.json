@@ -1,7 +1,7 @@
 {
-  "name": "wiring-pi",
-  "version": "2.2.1",
-  "description": "Bindings to wiringPi",
+  "name": "wiring-pi-2019",
+  "version": "1.0.4",
+  "description": "Bindings to latest wiringPi (Solves BCM Issue) (Node v6 only)",
   "main": "lib/exports.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:WiringPi/WiringPi-Node.git"
+    "url": "git@github.com:pjgpetecodes/WiringPi-Node.git"
   },
   "keywords": [
     "wiringPi",
@@ -19,10 +19,12 @@
     "raspberrypi",
     "bcm2835"
   ],
-  "author": "Igor Soarez <igorsoarez@gmail.com>",
+  "author": "Pete Gallagher <pete@pjgcreations.co.uk>",
   "contributors": [
     "Leandre Gohy <leandre.gohy@hexeo.be>",
-    "Eugene Ware <eugene@noblesamurai.com>"
+    "Eugene Ware <eugene@noblesamurai.com>",
+    "Igor Soarez <igorsoarez@gmail.com>",
+    "Pete Gallagher <pete@pjgcreations.co.uk>"
   ],
   "license": "BSD"
 }

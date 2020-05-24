@@ -44,16 +44,15 @@
         'src/devlib/maxdetect.cc',
         'src/devlib/piFace.cc',
         'src/devlib/piGlow.cc',
-        'src/devlib/piNes.cc',
-        'src/devlib/tcs34725.cc'
+        'src/devlib/piNes.cc'
       ],
       'include_dirs': [
-        'wiringpi/wiringPi',
-        'wiringpi/devLib'
+        'WiringPi/wiringPi',
+        'WiringPi/devLib'
       ],
       'libraries': [
-        '<!(pwd)/wiringpi/wiringPi/libwiringPi.a',
-        '<!(pwd)/wiringpi/devLib/libwiringPiDev.a'
+        '<!(pwd)/WiringPi/wiringPi/libwiringPi.a',
+        '<!(pwd)/WiringPi/devLib/libwiringPiDev.a'
       ],
       'cflags': [
         '-Wall'

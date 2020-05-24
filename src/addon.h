@@ -42,11 +42,11 @@
         v8::FunctionTemplate::New(isolate, nodemodule::name)->GetFunction())
         
     #define EXPORT_CONSTANT_INT(name) \
-      target->ForceSet(v8::String::NewFromUtf8(isolate, #name, v8::String::kInternalizedString), \
+      target->DefineOwnProperty(target->CreationContext(), v8::String::NewFromUtf8(isolate, #name, v8::String::kInternalizedString), \
         v8::Int32::New(isolate, name), static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete));
     
     #define EXPORT_CONSTANT_STRING(name) \
-      target->ForceSet(v8::String::NewFrontUtf8(isolate, #name, v8::String::kInternalizedString), \
+      target->DefineOwnProperty(target->CreationContext(), v8::String::NewFromUtf8(isolate, #name, v8::String::kInternalizedString), \
         v8::String::NewFromUtf8(isolate, name), static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete));
     
     #define EXPORT_CONSTANT_INT_ARRAY(name, array, length) \
@@ -55,7 +55,7 @@
         for (int i = 0; i < length; i++) { \
           arr->Set(i, v8::Int32::New(isolate, array[i])); \
         } \
-        target->ForceSet(v8::String::NewFromUtf8(isolate, #name, v8::String::kInternalizedString), \
+        target->DefineOwnProperty(target->CreationContext(), v8::String::NewFromUtf8(isolate, #name, v8::String::kInternalizedString), \
           arr, static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete)); \
       }
       
@@ -65,7 +65,7 @@
         for (int i = 0; i < length; i++) { \
           arr->Set(i, v8::String::NewFromUtf8(isolate, array[i])); \
         } \
-        target->ForceSet(v8::String::NewFromUtf8(isolate, #name, v8::String::kInternalizedString), \
+        target->DefineOwnProperty(target->CreationContext(), v8::String::NewFromUtf8(isolate, #name, v8::String::kInternalizedString), \
           arr, static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete)); \
       }
   

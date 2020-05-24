@@ -1,0 +1,35 @@
+--- Makefile	2019-06-09 16:11:11.208024572 +0000
++++ Makefile_new	2019-06-09 21:53:22.894082583 +0000
+@@ -69,9 +69,13 @@
+ 
+ all:		$(DYNAMIC)
+ 
+-.PHONY:	static
+-static:	
+-		$Q cat noMoreStatic
++static:		$(STATIC)
++
++$(STATIC):	$(OBJ)
++	$Q echo "[Link (Static)]"
++	$Q ar rcs $(STATIC) $(OBJ)
++	$Q ranlib $(STATIC)
++#	@size   $(STATIC)
+ 
+ $(DYNAMIC):	$(OBJ)
+ 	$Q echo "[Link (Dynamic)]"
+@@ -104,6 +108,15 @@
+ 	$Q ln -sf $(DESTDIR)$(PREFIX)/lib/libwiringPi.so.$(VERSION)	$(DESTDIR)/lib/libwiringPi.so
+ 	$Q $(LDCONFIG)
+ 
++.PHONY:	install-static
++install-static:	$(STATIC)
++	$Q echo "[Install Headers]"
++	$Q install -m 0755 -d						$(DESTDIR)$(PREFIX)/include
++	$Q install -m 0644 $(HEADERS)					$(DESTDIR)$(PREFIX)/include
++	$Q echo "[Install Static Lib]"
++	$Q install -m 0755 -d						$(DESTDIR)$(PREFIX)/lib
++	$Q install -m 0755 libwiringPi.a					$(DESTDIR)$(PREFIX)/lib
++
+ .PHONY:	install-deb
+ install-deb:	$(DYNAMIC)
+ 	$Q echo "[Install Headers: deb]"
